@@ -13,7 +13,7 @@ export function Header({ today }: HeaderProps) {
   return (
     <header className="flex items-baseline justify-between mb-8">
       <h1 className="text-[32px] font-bold tracking-tight">Groove</h1>
-      <span className="text-sm text-(--color-text-secondary)">
+      <span className="text-sm text-text-secondary">
         {FORMATTER.format(today)}
       </span>
     </header>

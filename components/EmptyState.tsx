@@ -20,13 +20,13 @@ export function EmptyState({ onAdd }: EmptyStateProps) {
       <h2 className="text-2xl font-bold tracking-tight mb-2">
         Začni nový habit
       </h2>
-      <p className="text-base text-(--color-text-secondary) mb-8 max-w-xs">
+      <p className="text-base text-text-secondary mb-8 max-w-xs">
         Přidej první návyk a sleduj svůj streak den po dni.
       </p>
       <button
         type="button"
         onClick={onAdd}
-        className="h-12 px-6 rounded-xl bg-(--color-primary) text-white font-bold transition-transform hover:scale-[1.02] active:scale-[0.98]"
+        className="h-12 px-6 rounded-xl bg-primary text-white font-bold transition-transform hover:scale-[1.02] active:scale-[0.98]"
       >
         Přidat habit
       </button>
