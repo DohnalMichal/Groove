@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { loadHabits, saveHabits, type Habit } from "@/lib/storage";
 import { todayKey } from "@/lib/date";
+import { loadHabits, saveHabits, type Habit } from "@/lib/storage";
 
 const UNDO_TIMEOUT_MS = 5000;
 
@@ -28,8 +28,11 @@ export function useHabits(): UseHabitsReturn {
   const [pendingUndo, setPendingUndo] = useState<PendingDelete | null>(null);
   const undoTimerRef = useRef<number | null>(null);
 
-  // Hydrate from localStorage on mount
+  // Hydrate from localStorage on mount. setState-in-effect is required:
+  // SSR'd Client Components can't access localStorage during initial render,
+  // and useState lazy initializers don't re-run after server→client handoff.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHabits(loadHabits());
     setIsHydrated(true);
   }, []);
