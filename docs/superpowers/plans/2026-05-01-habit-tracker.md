@@ -132,7 +132,7 @@ export default function Home() {
   return (
     <main className="mx-auto max-w-md px-6 py-12">
       <h1 className="text-3xl font-bold tracking-tight">Groove</h1>
-      <p className="mt-2 text-sm text-[color:var(--color-text-secondary)]">
+      <p className="mt-2 text-sm text-(--color-text-secondary)">
         Foundation OK — komponenty se napojí v posledním tasku.
       </p>
     </main>
@@ -524,7 +524,7 @@ export function Header({ today }: HeaderProps) {
   return (
     <header className="flex items-baseline justify-between mb-8">
       <h1 className="text-[32px] font-bold tracking-tight">Groove</h1>
-      <span className="text-sm text-[color:var(--color-text-secondary)]">
+      <span className="text-sm text-(--color-text-secondary)">
         {FORMATTER.format(today)}
       </span>
     </header>
@@ -578,13 +578,13 @@ export function EmptyState({ onAdd }: EmptyStateProps) {
       <h2 className="text-2xl font-bold tracking-tight mb-2">
         Začni nový habit
       </h2>
-      <p className="text-base text-[color:var(--color-text-secondary)] mb-8 max-w-xs">
+      <p className="text-base text-(--color-text-secondary) mb-8 max-w-xs">
         Přidej první návyk a sleduj svůj streak den po dni.
       </p>
       <button
         type="button"
         onClick={onAdd}
-        className="h-12 px-6 rounded-xl bg-[color:var(--color-primary)] text-white font-bold transition-transform hover:scale-[1.02] active:scale-[0.98]"
+        className="h-12 px-6 rounded-xl bg-(--color-primary) text-white font-bold transition-transform hover:scale-[1.02] active:scale-[0.98]"
       >
         Přidat habit
       </button>
@@ -673,14 +673,14 @@ export function KebabMenu({ items, ariaLabel = "Možnosti" }: KebabMenuProps) {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={handleTriggerClick}
-        className="w-8 h-8 rounded-full flex items-center justify-center text-[color:var(--color-text-secondary)] hover:bg-[color:var(--color-background)] transition-colors"
+        className="w-8 h-8 rounded-full flex items-center justify-center text-(--color-text-secondary) hover:bg-(--color-background) transition-colors"
       >
         <span className="text-xl leading-none">⋯</span>
       </button>
       {open && (
         <div
           role="menu"
-          className="absolute right-0 top-10 min-w-[160px] bg-white border border-[color:var(--color-border)] rounded-xl shadow-[var(--shadow-medium)] py-2 z-10"
+          className="absolute right-0 top-10 min-w-[160px] bg-white border border-(--color-border) rounded-xl shadow-(--shadow-medium) py-2 z-10"
         >
           {items.map((item) => (
             <button
@@ -688,10 +688,10 @@ export function KebabMenu({ items, ariaLabel = "Možnosti" }: KebabMenuProps) {
               key={item.label}
               role="menuitem"
               onClick={(e) => handleItemClick(e, item)}
-              className={`block w-full text-left px-4 py-2 text-sm transition-colors hover:bg-[color:var(--color-background)] ${
+              className={`block w-full text-left px-4 py-2 text-sm transition-colors hover:bg-(--color-background) ${
                 item.destructive
-                  ? "text-[color:var(--color-error)]"
-                  : "text-[color:var(--color-text-primary)]"
+                  ? "text-(--color-error)"
+                  : "text-(--color-text-primary)"
               }`}
             >
               {item.label}
@@ -760,9 +760,9 @@ export function HabitCard({
         }
       }}
       aria-pressed={doneToday}
-      className={`bg-white rounded-3xl p-6 cursor-pointer select-none border-2 shadow-[var(--shadow-subtle)] transition-[transform,box-shadow,border-color] hover:scale-[1.02] hover:shadow-[var(--shadow-medium)] active:scale-[0.99] ${
+      className={`bg-white rounded-3xl p-6 cursor-pointer select-none border-2 shadow-(--shadow-subtle) transition-[transform,box-shadow,border-color] hover:scale-[1.02] hover:shadow-(--shadow-medium) active:scale-[0.99] ${
         doneToday
-          ? "border-[color:var(--color-primary)]"
+          ? "border-(--color-primary)"
           : "border-transparent"
       }`}
     >
@@ -781,10 +781,10 @@ export function HabitCard({
         </div>
       </div>
       <div className="flex items-baseline gap-2">
-        <span className="text-[40px] font-bold leading-none tracking-tight text-[color:var(--color-secondary)]">
+        <span className="text-[40px] font-bold leading-none tracking-tight text-(--color-secondary)">
           {streak}
         </span>
-        <span className="text-sm text-[color:var(--color-text-secondary)]">
+        <span className="text-sm text-(--color-text-secondary)">
           {streak === 1 ? "den v řadě" : streak >= 2 && streak <= 4 ? "dny v řadě" : "dní v řadě"}
         </span>
       </div>
@@ -798,8 +798,8 @@ function CheckCircle({ done }: { done: boolean }) {
       aria-hidden="true"
       className={`w-7 h-7 rounded-full border-2 flex items-center justify-center transition-colors duration-200 ${
         done
-          ? "bg-[color:var(--color-primary)] border-[color:var(--color-primary)] text-white"
-          : "border-[color:var(--color-border)] bg-white"
+          ? "bg-(--color-primary) border-(--color-primary) text-white"
+          : "border-(--color-border) bg-white"
       }`}
     >
       {done && <span className="text-sm font-bold leading-none">✓</span>}
@@ -888,7 +888,7 @@ export function AddHabitModal({ open, onClose, onSubmit }: AddHabitModalProps) {
       />
       <form
         onSubmit={handleSubmit}
-        className="relative bg-white rounded-3xl p-8 w-full max-w-md shadow-[var(--shadow-medium)]"
+        className="relative bg-white rounded-3xl p-8 w-full max-w-md shadow-(--shadow-medium)"
       >
         <h2
           id="add-habit-title"
@@ -902,21 +902,21 @@ export function AddHabitModal({ open, onClose, onSubmit }: AddHabitModalProps) {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder="Např. Ranní běh"
-          className="w-full h-12 px-4 rounded-xl border-2 border-[color:var(--color-border)] bg-white focus:border-[color:var(--color-primary)] outline-none transition-colors"
+          className="w-full h-12 px-4 rounded-xl border-2 border-(--color-border) bg-white focus:border-(--color-primary) outline-none transition-colors"
           maxLength={80}
         />
         <div className="flex justify-end gap-3 mt-6">
           <button
             type="button"
             onClick={onClose}
-            className="h-12 px-6 rounded-xl text-[color:var(--color-text-secondary)] font-medium transition-transform hover:scale-[1.02] active:scale-[0.98]"
+            className="h-12 px-6 rounded-xl text-(--color-text-secondary) font-medium transition-transform hover:scale-[1.02] active:scale-[0.98]"
           >
             Zrušit
           </button>
           <button
             type="submit"
             disabled={!canSubmit}
-            className="h-12 px-6 rounded-xl bg-[color:var(--color-primary)] text-white font-bold transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-40 disabled:hover:scale-100"
+            className="h-12 px-6 rounded-xl bg-(--color-primary) text-white font-bold transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-40 disabled:hover:scale-100"
           >
             Uložit
           </button>
@@ -963,14 +963,14 @@ export function UndoToast({ message, onUndo }: UndoToastProps) {
     <div
       role="status"
       aria-live="polite"
-      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-4 bg-[color:var(--color-text-primary)] text-white rounded-xl px-5 py-3 shadow-[var(--shadow-medium)]"
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-4 bg-(--color-text-primary) text-white rounded-xl px-5 py-3 shadow-(--shadow-medium)"
       style={{ animation: "groove-toast-in 200ms ease-out" }}
     >
       <span className="text-sm">{message}</span>
       <button
         type="button"
         onClick={onUndo}
-        className="text-sm font-bold text-[color:var(--color-primary)] transition-transform hover:scale-[1.05] active:scale-[0.95]"
+        className="text-sm font-bold text-(--color-primary) transition-transform hover:scale-[1.05] active:scale-[0.95]"
       >
         Vrátit
       </button>
@@ -1061,7 +1061,7 @@ export function HabitTrackerApp() {
           <button
             type="button"
             onClick={() => setModalOpen(true)}
-            className="mt-6 w-full h-12 rounded-xl bg-[color:var(--color-primary)] text-white font-bold transition-transform hover:scale-[1.02] active:scale-[0.98]"
+            className="mt-6 w-full h-12 rounded-xl bg-(--color-primary) text-white font-bold transition-transform hover:scale-[1.02] active:scale-[0.98]"
           >
             + Přidat habit
           </button>
