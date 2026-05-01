@@ -111,18 +111,17 @@ export function useHabits(): UseHabitsReturn {
   );
 
   const undoDelete = useCallback(() => {
-    setPendingUndo((current) => {
-      if (!current) return null;
-      clearUndoTimer();
-      setHabits((prev) => {
-        const next = [...prev];
-        const insertAt = Math.min(current.index, next.length);
-        next.splice(insertAt, 0, current.habit);
-        return next;
-      });
-      return null;
+    if (!pendingUndo) return;
+    clearUndoTimer();
+    const { habit, index } = pendingUndo;
+    setHabits((prev) => {
+      const next = [...prev];
+      const insertAt = Math.min(index, next.length);
+      next.splice(insertAt, 0, habit);
+      return next;
     });
-  }, [clearUndoTimer]);
+    setPendingUndo(null);
+  }, [pendingUndo, clearUndoTimer]);
 
   // Cleanup timer on unmount
   useEffect(() => () => clearUndoTimer(), [clearUndoTimer]);
