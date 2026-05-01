@@ -23,6 +23,10 @@
   --shadow-medium: 0 4px 16px rgba(232, 93, 4, 0.12);
 }
 
+:root {
+  color-scheme: light;
+}
+
 body {
   background: var(--color-background);
   color: var(--color-text-primary);
